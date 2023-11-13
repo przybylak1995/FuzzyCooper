@@ -5,7 +5,12 @@ import json
 def get_request(url):
     response = requests.get(url)
     if response.status_code // 100 == 2 or response.status_code // 100 == 3:
+        print('-----------------------------------------------------------------------------------------------------')
         print(f"{url} response code:{response.status_code}")
+        for key, value in response.headers.items():
+            print(f"{key}: {value}")
+
+        print('-----------------------------------------------------------------------------------------------------')
 
 
 def graphql_request(url):
