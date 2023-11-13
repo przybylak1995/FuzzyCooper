@@ -1,10 +1,20 @@
-import sys
+#!/usr/bin/env python3
 import argparse
 import fuzzer
 import load_wordlist
 import pyfiglet
 from termcolor import colored
+import signal
+import sys
 
+
+def signal_handler(sig, frame):
+    print('\nYou pressed Ctrl+C! Exiting...')
+    sys.exit(0)
+
+
+# Register the signal handler
+signal.signal(signal.SIGINT, signal_handler)
 
 def main():
     ascii_banner = pyfiglet.figlet_format("!Fuzzy Cooper!")
