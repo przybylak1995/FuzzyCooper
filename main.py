@@ -21,7 +21,7 @@ def main():
     colored_banner = colored(ascii_banner, color='cyan', attrs=['bold'])
     print(colored_banner)
 
-    parser = argparse.ArgumentParser(description='Make sure to add every !word! you like to fuzz between these!! ',
+    parser = argparse.ArgumentParser(description='The Fuzz word is BANG ',
                                      formatter_class=argparse.RawTextHelpFormatter)
 
     # Changed the argument name from 'help' to 'show_help'

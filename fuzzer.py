@@ -8,7 +8,7 @@ def fuzz_url(url, wordlist, method):
 
 
 def change_word(url,word, method):
-    words_between = re.findall(r"!(.*?)!", url)
+    words_between = re.findall(r"BANG", url)
     for i in range(0, len(words_between)):
         new_url = url.replace(words_between[i], word)
         new_url = new_url.replace("!", "")
