@@ -3,27 +3,29 @@ import argparse
 import fuzzer
 import load_wordlist
 import pyfiglet
+from termcolor import colored
 
 
 def main():
     ascii_banner = pyfiglet.figlet_format("!Fuzzy Cooper!")
-    print(ascii_banner)
+    colored_banner = colored(ascii_banner, color='cyan', attrs=['bold'])
+    print(colored_banner)
 
-    parser = argparse.ArgumentParser(description='URL Fuzzer', formatter_class=argparse.RawTextHelpFormatter)
+    parser = argparse.ArgumentParser(description='Make sure to add every !word! you like to fuzz between these!! ',
+                                     formatter_class=argparse.RawTextHelpFormatter)
 
+    # Changed the argument name from 'help' to 'show_help'
     parser.add_argument('-u', '--url', required=True, help='Target URL')
     parser.add_argument('-w', '--wordlist', required=True, help='Path to wordlist file')
+    parser.add_argument('-m', '--method', choices=['GET', 'POST','GQL'], default='GET', help='HTTP request method (GET, POST or GraphQL)')
 
     args = parser.parse_args()
 
-    if args.help is not None:
-        parser.print_help()
-        sys.exit(0)
-
     url = args.url
     wordlist = load_wordlist.load_words(args.wordlist)
+    method = args.method
 
-    fuzzer.fuzz_url(url, wordlist)
+    fuzzer.fuzz_url(url, wordlist, method)
 
 
 if __name__ == "__main__":

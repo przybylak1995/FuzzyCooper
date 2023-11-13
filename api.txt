@@ -1,0 +1,8 @@
+graphql
+api
+v1
+api/graphql
+graphql/api
+graphql/graphql
+graphql/v1
+graphql/v2
